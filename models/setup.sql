@@ -1,0 +1,7 @@
+CREATE TABLE tbl_grocery(
+id INTEGER  PRIMARY KEY,
+name TEXT NOT NULL,
+imgUrl TEXT NOT NULL,
+cost NUMBER NOT NULL,
+created_on DATE NOT NULL
+);

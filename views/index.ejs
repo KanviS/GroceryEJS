@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="icon" href="/images/logo.png">
+  </head>
+  <body>
+  <div class="container">
+    <h2><%= title %></h2>
+    <p>You have below list of grocery for selection:</p>
+    <button type="button" class="btn btn-primary float-right"><i class="fa fa-plus" aria-hidden="true"></i></button>
+    <table class="table">
+      <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Cost</th>
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><img src="https://healthynibblesandbits.com/wp-content/uploads/2018/10/How-to-Make-Paneer-10.jpg"></td>
+        <td>Paneer</td>
+        <td>$24.00</td>
+        <td><button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          <button type="button" class="btn btn-success"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+      </tr>
+      <tr>
+        <td><img src="https://www.thespruceeats.com/thmb/l4Gsj31hI3vZpIrQdjM2ERHk28c=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Asparagus-56a2a8a13df78cf77278871a.jpg"></td>
+        <td>Asparagus</td>
+        <td>$67.90</td>
+        <td><button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          <button type="button" class="btn btn-success"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+      </tr>
+      <tr>
+        <td><img src="https://media.gq.com/photos/581799e0a6fe84375dbe8d86/16:9/w_2560%2Cc_limit/Cheese%2525201.jpg"></td>
+        <td>Cheese</td>
+        <td>$80.90</td>
+        <td><button type="button" idclass="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+          <button type="button" class="btn btn-success"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="float-right font-weight-bold">Total: $900.50</div>
+  </div>
+  </body>
+</html>

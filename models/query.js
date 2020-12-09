@@ -41,7 +41,7 @@ exports.delete_grocery_by_id=async(id)=>{
 
 // Get all count grocery
 exports.get_grocery_count=async()=> {
-    let stmnt = db.prepare('SELECT SUM(cost) FROM tbl_grocery')
+    let stmnt = db.prepare('SELECT SUM(cost) as totalCost FROM tbl_grocery')
     let result
     try {
         result = await stmnt.get()

@@ -1,13 +1,14 @@
 let groceryList = [];
+let price=0;
 
-let sortDirection = false;
 window.onload = () => {
+    totalPrice();
     fetchGroceryList();
     loadTableData();
-    console.log(totalPrice())
 }
 
 const setTableData = (groceries) => {
+
     groceryList = groceries
 }
 const fetchGroceryList = () => {
@@ -16,28 +17,43 @@ const fetchGroceryList = () => {
         .then((data) => {
             setTableData(data);
             loadTableData(data);
-            console.log('response from api', data)
         })
 }
 
-const totalPrice = () => {
-    const total =  groceryList && groceryList.reduce((acc, curr) => {
-        return acc + curr.cost
-    }, 0)
-    return total
+async function totalPrice() {
+   await fetch('/api/total')
+        .then((res) => res.json())
+        .then((data) => {
+            price= data.totalCost;
+        })
 }
 
-function loadTableData(groceryList){
+async function deleteData(groceryId){
+    await fetch('/api/delete/'+groceryId)
+        .then((res)=>res.json())
+        .then((data)=>{
+            location.reload();
+    })
+}
+
+async function loadTableData(groceryList){
     const tableBody = document.getElementById('tableData');
     let data_html = '';
-    const priceTotal = totalPrice();
     groceryList && groceryList.length && groceryList.forEach((item, idx) => {
-        console.log(item.name);
-        data_html += `<tr><td><img src=${item.imgUrl}></td><td>${item.name}</td><td>${item.cost}</td></tr>`
+        data_html += `<tr><td><img src=${item.imgUrl}></td>
+                          <td>${item.name}</td>
+                          <td>${item.cost}</td>
+                          <td><button onclick="deleteData(${item.id})" type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                              <button onclick="editData(${item.id})" type="button" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></td>
+                      </tr>`
     })
 
-    //print console
-    console.log(data_html);
-    tableBody.innerHTML = data_html + `<td>Sum</td>`+`<td></td>`+`<td>${priceTotal}</td>`;
+    tableBody.innerHTML = data_html;
+    loadTotalPrice();
+
+}
+async function loadTotalPrice() {
+    const totalPrice = document.getElementById('totalPrice');
+    totalPrice.innerHTML = `Sum: ${price}`;
 
 }

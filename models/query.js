@@ -2,7 +2,7 @@ db=require('./base').db
 
 // Add post
 exports.add_grocery=async(name,imgUrl,cost)=> {
-    let stmn = db.prepare("Insert into tbl_grocery(name,imgUrl,cost,created_on) values(?,?,?,?)")
+    let stmn = db.prepare('INSERT INTO tbl_grocery(name,imgUrl,cost,created_on) VALUES(?,?,?,?)')
     let msg
     try {
         msg = await stmn.run(name,imgUrl, cost, Date.now())
@@ -15,10 +15,10 @@ exports.add_grocery=async(name,imgUrl,cost)=> {
 
 // Get post by id
 exports.delete_grocery_by_id=async(id)=>{
-    let stmnt=db.prepare('delete from tbl_grocery where id=?')
-let result
+    let stmnt=db.prepare('DELETE FROM tbl_grocery WHERE id=?')
+    let result
     try{
-        result=await stmnt.get(id)
+        result=await stmnt.run(id)
     }catch(e){
         console.error(e.message)
         return null
@@ -28,7 +28,7 @@ let result
 
 // Get all posts
     exports.get_all_grocery=async()=> {
-        let stmnt = db.prepare('select * from grocery')
+        let stmnt = db.prepare(`SELECT * FROM tbl_grocery`)
         let result
         try {
             result = await stmnt.all()
@@ -41,7 +41,7 @@ let result
 
 // Get all count grocery
 exports.get_grocery_count=async()=> {
-    let stmnt = db.prepare('select sum(cost) from grocery')
+    let stmnt = db.prepare('SELECT SUM(cost) FROM tbl_grocery')
     let result
     try {
         result = await stmnt.get()

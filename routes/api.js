@@ -22,7 +22,8 @@ router.post('/add',async(req,res)=>{
     let name=req.body.name
     let imgUrl=req.body.imgUrl
     let cost=req.body.cost
-    let added=await grocery_model.add_grocery(name,imgUrl,cost)
+    let added=await grocery_model.add_grocery(name,imgUrl,cost);
+    console.log(added);
     if(added){
         res.send({msg:"Grocery added to database"})
     }else{

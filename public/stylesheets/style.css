@@ -1,15 +1,63 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: radial-gradient(circle, #e4eef0, #dfebef, #dae8ef, #d6e5ef, #d4e1ef, #cdddec, #c6d9ea, #bfd5e7, #b0d0e0, #a2ccd7, #96c7cb, #8dc1bd);
 }
 
 a {
-  color: #00B7FF;
+  color: #dbcfbc;
 }
 
+#nav-bar{
+  position: static;
+  top: 0;
+  z-index: 10;
+}
+
+.navbar{
+  background-color: transparent;
+  /*background-image: linear-gradient(to right,#b7e4c7,#d8f3dc);*/
+  padding: 0 !important;
+}
+
+.navbar-brand {
+  color: #000000 !important;
+  font-weight: 600;
+  font-size: 28px;
+  padding-left: 20px;
+}
+
+.navbar-nav li{
+  padding : 0 10px;
+}
+
+.navbar-nav li a{
+  color: #000000 !important;
+  font-weight: 600;
+  font-size: 28px;
+}
+
+#banner{
+  color: black;
+  padding-top: 2%;
+}
+
+.promo-title{
+  font-size: 20px;
+  font-weight: 600;
+  margin-top: 30px;
+  margin-left: 5px;
+}
+.btn-primary{
+  margin: 10px;
+}
 .table img {
   width: 100px;
   height: 100px;
+}
+th{
+  font-weight: 900;
+  font-size: 18px;
 }
 
 .container button {

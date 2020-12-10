@@ -2,10 +2,10 @@ db=require('./base').db
 
 // Add post
 exports.add_grocery=async(name,imgUrl,cost)=> {
-    let stmn = db.prepare('INSERT INTO tbl_grocery(name,imgUrl,cost,created_on) VALUES(?,?,?,?)')
+    let stmn = db.prepare('INSERT INTO tbl_grocery(name,imgUrl,quantity,cost,created_on) VALUES(?,?,?,?,?)')
     let msg
     try {
-        msg = await stmn.run(name,imgUrl, cost, Date.now())
+        msg = await stmn.run(name,imgUrl,quantity, cost, Date.now())
     } catch (e) {
         console.log(e.message)
         return null
@@ -13,7 +13,7 @@ exports.add_grocery=async(name,imgUrl,cost)=> {
     return msg
 }
 
-// Get post by id
+// Delete post by id
 exports.delete_grocery_by_id=async(id)=>{
     let stmnt=db.prepare('DELETE FROM tbl_grocery WHERE id=?')
     let result
@@ -21,6 +21,19 @@ exports.delete_grocery_by_id=async(id)=>{
         result=await stmnt.run(id)
     }catch(e){
         console.error(e.message)
+        return null
+    }
+    return result
+}
+
+//update quantity
+exports.update_quantity = async() =>{
+    let stmnt = db.prepare('UPDATE tbl_grocery SET quantity = ? WHERE id = ?')
+    let result
+    try{
+        result = await stmnt.run(quantity,id)
+    }catch (e) {
+        console.log(e.message)
         return null
     }
     return result

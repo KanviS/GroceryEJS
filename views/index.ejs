@@ -8,24 +8,56 @@
     <link rel="icon" href="/images/logo.png">
   </head>
   <body>
-  <div class="container">
-    <h2><%= title %></h2>
-    <p>You have below list of grocery for selection:</p>
+
+  <section id="nav-bar">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <a class="navbar-brand" href="#"><%= title %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">Cart <span class="sr-only"></span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+  <section id="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+            <p class="promo-title">You have below list of grocery for selection</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
     <button type="button" class="btn btn-primary float-right"><i class="fa fa-plus" aria-hidden="true"></i></button>
     <table class="table">
       <thead>
       <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Cost</th>
-        <th>Action</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Cost</th>
+        <th scope="col">Action</th>
       </tr>
       </thead>
       <tbody id = "tableData">
       </tbody>
     </table>
     <div id="totalPrice" class="font-weight-bold float-right"></div>
+  </section>
+
+
   </div>
-  <script src="/javaScripts/groeryList.js"></script>
+  <script src="./public/javaScripts/groeryList.js"></script>
   </body>
 </html>

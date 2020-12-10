@@ -8,7 +8,6 @@ window.onload = () => {
 }
 
 const setTableData = (groceries) => {
-
     groceryList = groceries
 }
 const fetchGroceryList = () => {
@@ -32,7 +31,9 @@ async function deleteData(groceryId){
     await fetch('/api/delete/'+groceryId)
         .then((res)=>res.json())
         .then((data)=>{
-            location.reload();
+            totalPrice();
+            fetchGroceryList();
+            loadTableData();
     })
 }
 
@@ -48,12 +49,16 @@ async function loadTableData(groceryList){
                       </tr>`
     })
 
+    if(groceryList.length==0){
+        tableBody.classList.add('text-center');
+        data_html="<tr><td colspan='4'>No data is available!</td></tr>";
+    }
+
     tableBody.innerHTML = data_html;
     loadTotalPrice();
-
 }
+
 async function loadTotalPrice() {
     const totalPrice = document.getElementById('totalPrice');
     totalPrice.innerHTML = `Sum: ${price}`;
-
 }

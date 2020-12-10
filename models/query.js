@@ -54,7 +54,7 @@ exports.update_quantity = async() =>{
 
 // Get all count grocery
 exports.get_grocery_count=async()=> {
-    let stmnt = db.prepare('SELECT printf("%.2f",ifnull(SUM(cost),0)) as totalCost FROM tbl_grocery')
+    let stmnt = db.prepare('SELECT printf("%.2f",ifnull(SUM(cost*quantity),0)) as totalCost FROM tbl_grocery')
     let result
     try {
         result = await stmnt.get()

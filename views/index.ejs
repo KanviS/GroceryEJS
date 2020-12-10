@@ -8,44 +8,56 @@
     <link rel="icon" href="/images/logo.png">
   </head>
   <body>
-  <div class="container">
-    <h2><%= title %></h2>
-    <p>You have below list of grocery for selection:</p>
+
+  <section id="nav-bar">
+    <nav class="navbar navbar-expand-lg navbar-light ">
+      <a class="navbar-brand" href="#"><%= title %></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li>
+            <a class="nav-link" href="#">Cart <span class="sr-only"></span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+  <section id="banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+            <p class="promo-title">You have below list of grocery for selection</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
     <button type="button" class="btn btn-primary float-right"><i class="fa fa-plus" aria-hidden="true"></i></button>
     <table class="table">
       <thead>
       <tr>
-        <th></th>
-        <th>Name</th>
-        <th>Cost</th>
-        <th>Action</th>
+        <th scope="col"></th>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Cost</th>
+        <th scope="col">Action</th>
       </tr>
       </thead>
-      <tbody>
-      <tr>
-        <td><img src="https://healthynibblesandbits.com/wp-content/uploads/2018/10/How-to-Make-Paneer-10.jpg"></td>
-        <td>Paneer</td>
-        <td>$24.00</td>
-        <td><button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-          <button type="button" class="btn btn-success"><i class="fa fa-times" aria-hidden="true"></i></button></td>
-      </tr>
-      <tr>
-        <td><img src="https://www.thespruceeats.com/thmb/l4Gsj31hI3vZpIrQdjM2ERHk28c=/960x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/Asparagus-56a2a8a13df78cf77278871a.jpg"></td>
-        <td>Asparagus</td>
-        <td>$67.90</td>
-        <td><button type="button" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-          <button type="button" class="btn btn-success"><i class="fa fa-times" aria-hidden="true"></i></button></td>
-      </tr>
-      <tr>
-        <td><img src="https://media.gq.com/photos/581799e0a6fe84375dbe8d86/16:9/w_2560%2Cc_limit/Cheese%2525201.jpg"></td>
-        <td>Cheese</td>
-        <td>$80.90</td>
-        <td><button type="button" idclass="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></button>
-          <button type="button" class="btn btn-success"><i class="fa fa-times" aria-hidden="true"></i></button></td>
-      </tr>
+      <tbody id = "tableData">
       </tbody>
     </table>
-    <div class="float-right font-weight-bold">Total: $900.50</div>
+    <div id="totalPrice" class="font-weight-bold float-right"></div>
+  </section>
+
+
   </div>
+  <script src="./public/javaScripts/groeryList.js"></script>
   </body>
 </html>

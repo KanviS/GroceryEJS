@@ -21,8 +21,11 @@ router.get('/init',async(req,res)=>{
 router.post('/add',async(req,res)=>{
     let name=req.body.name
     let imgUrl=req.body.imgUrl
+    let qty=req.body.quantity
     let cost=req.body.cost
-    let added=await grocery_model.add_grocery(name,imgUrl,cost)
+
+    let added=await grocery_model.add_grocery(name,imgUrl,qty,cost);
+    console.log(added);
     if(added){
         res.send({msg:"Grocery added to database"})
     }else{
@@ -33,6 +36,17 @@ router.post('/add',async(req,res)=>{
 router.get('/delete/:id',async(req,res)=>{
     let id=req.params.id
     let result= await grocery_model.delete_grocery_by_id(id)
+    if(result){
+        res.send(result)
+    }else{
+        res.send({msg:"Something went wrong."})
+    }
+})
+
+router.get('/update/:id',async(req,res)=>{
+    let id=req.params.id
+    let qty = req.body.quantity
+    let result= await grocery_model.edit_grocery_qty(id,qty)
     if(result){
         res.send(result)
     }else{

@@ -3,7 +3,7 @@ var router = express.Router();
 var init_model=require('../models/init')
 var grocery_model=require('../models/query')
 
-// GET Homepage
+// GET ALL THE GROCERIES AND GROCERY COUNT
 router.get('/', async(req, res) => {
   let result=await init_model.init_DB()
   let groceries = await grocery_model.get_all_grocery()
@@ -19,12 +19,12 @@ router.get('/', async(req, res) => {
   }
 });
 
-// GET Posts
+// REDIRECT TO INDEX PAGE
 router.get('/groceries', async (req, res) => {
   res.redirect('/')
 })
 
-
+// DELETE GROCERIES
 router.get('/delete/:id',async(req,res)=>{
   let id=req.params.id
   let result= await grocery_model.delete_grocery_by_id(id)
@@ -34,7 +34,7 @@ router.get('/delete/:id',async(req,res)=>{
     res.send({msg:"Something went wrong."})
   }
 })
-
+// ADD GROCERY 
 router.post('/add',async(req,res)=>{
   let name=req.body.name
   let imgUrl=req.body.imgUrl

@@ -3,6 +3,7 @@ var router = express.Router();
 var init_model=require('../models/init')
 var grocery_model=require('../models/query')
 
+// get all grocery
 router.get('/groceries', async function(req, res, next) {
     let results= await grocery_model.get_all_grocery()
     if(results){

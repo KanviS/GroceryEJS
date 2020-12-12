@@ -3,7 +3,7 @@ id INTEGER  PRIMARY KEY,
 name TEXT NOT NULL,
 imgUrl TEXT NOT NULL,
 quantity NUMBER NOT NULL,
-cost NUMBER NOT NULL,
+cost REAL NOT NULL,
 created_on DATE NOT NULL
 );
 

@@ -5,9 +5,24 @@
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
         </div>
-        <div class="form-group">
-            <label for="imgUrl">Image Url</label>
-            <input type="text" class="form-control" id="imgUrl" name="imgUrl" placeholder="Enter imgUrl">
+<!--        <div class="form-group">-->
+<!--            <form method="POST" action="/upload-grocery-pic" enctype="multipart/form-data">-->
+<!--                <div>-->
+<!--                    <label>Select Your Grocery Picture:</label>-->
+<!--                    <input type="file" name="grocery_pic" />-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <input type="submit" name="btn_upload_grocery_pic" value="Upload" />-->
+<!--                </div>-->
+<!--            </form>-->
+
+            <form method="POST" action="/upload-grocery-pic" enctype="multipart/form-data">
+                <label for="imgUrl">Select Your Grocery Picture:</label>
+                    <input type="file" class="form-control" name="grocery_pic" placeholder="Enter imgUrl" />
+                <div>
+                    <input type="submit" name="btn_upload_grocery_pic" value="Upload" />
+                </div>
+            </form>
         </div>
         <div class="form-group">
             <label for="quantity">Quantity</label>
@@ -20,4 +35,14 @@
         <button type="submit" class="btn btn-success" data-dismiss="modal">Add</button>
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 </form>
+
+<!--<form method="POST" action="/upload-grocery-pic" enctype="multipart/form-data">-->
+<!--    <div>-->
+<!--        <label>Select Your Grocery Picture:</label>-->
+<!--        <input type="file" name="grocery_pic" />-->
+<!--    </div>-->
+<!--    <div>-->
+<!--        <input type="submit" name="btn_upload_grocery_pic" value="Upload" />-->
+<!--    </div>-->
+<!--</form>-->
 <%- include('./parts/tail') %>

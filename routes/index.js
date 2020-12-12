@@ -19,6 +19,27 @@ router.get('/', async(req, res) => {
   }
 });
 
+// GET Post Submission Form
+router.get('/add', (req, res) => {
+  res.render('add', {title: "Add Grocery", msg: ""})
+});
+
+// POST New Post
+router.post('/add', async (req, res) => {
+  let name=req.body.name
+  let imgUrl=req.body.imgUrl
+  let quantity=req.body.quantity
+  let cost=req.body.cost
+
+  let added=await grocery_model.add_grocery(name,imgUrl,quantity,cost);
+
+  if(added){
+    res.redirect('/groceries')
+  }else{
+    res.render('add', {title: "Submit Post", msg: "ERROR: Please refill form."})
+  }
+});
+
 // REDIRECT TO INDEX PAGE
 router.get('/groceries', async (req, res) => {
   res.redirect('/')

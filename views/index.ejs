@@ -1,45 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/bootstrap.css' />
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="icon" href="/images/logo.png">
-  </head>
-  <body>
-
-  <section id="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-light ">
-      <a class="navbar-brand" href="#"><%= title %></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li>
-            <a class="nav-link" href="#">Cart <span class="sr-only"></span></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </section>
-  <section id="banner">
+<%- include('./parts/header') %>
     <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-            <p class="promo-title">You have below list of grocery for selection</p>
-          </div>
-
-        </div>
+      <div class="d-inline-block">
+        <h6>You have below list of grocery for selection</h6>
+      </div>
+      <div class="d-inline-block pull-right">
+        <span>
+          <a href="/add" type="button" class="btn btn-primary float-right"><i class="fa fa-plus" aria-hidden="true"></i></a>
+        </span>
       </div>
     </div>
-    <button type="button" class="btn btn-primary float-right"><i class="fa fa-plus" aria-hidden="true"></i></button>
     <table class="table">
       <thead>
       <tr>
@@ -51,13 +20,20 @@
       </tr>
       </thead>
       <tbody id = "tableData">
+      <% if(groceries.length > 0){ %>
+      <% groceries.forEach((grocery) => { %>
+        <tr><td><img src=<%= grocery.imgUrl %>></td>
+          <td><%= grocery.name %></td>
+          <td><%= grocery.quantity %></td>
+          <td>$<%= grocery.cost %></td>
+          <td><a href="delete/<%= grocery.id %>" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            <a href="update/<%= grocery.id %>" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+        </tr>
+      <% }); %>
+      <% } else{ %>
+        <tr><td colspan="4" class="text-center">No data is available</td></tr>
+      <% } %>
       </tbody>
     </table>
-    <div id="totalPrice" class="font-weight-bold float-right"></div>
-  </section>
-
-
-  </div>
-  <script src="./public/javaScripts/groeryList.js"></script>
-  </body>
-</html>
+    <div id="totalPrice" class="font-weight-bold float-right">Sum: $<%= price.total %></div>
+    <%- include('./parts/tail') %>

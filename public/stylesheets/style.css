@@ -1,7 +1,7 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: radial-gradient(circle, #e4eef0, #dfebef, #dae8ef, #d6e5ef, #d4e1ef, #cdddec, #c6d9ea, #bfd5e7, #b0d0e0, #a2ccd7, #96c7cb, #8dc1bd);
+  /*background-image: radial-gradient(circle, #e4eef0, #dfebef, #dae8ef, #d6e5ef, #d4e1ef, #cdddec, #c6d9ea, #bfd5e7, #b0d0e0, #a2ccd7, #96c7cb, #8dc1bd);*/
 }
 
 a {
@@ -42,12 +42,12 @@ a {
   padding-top: 2%;
 }
 
-.promo-title{
-  font-size: 20px;
-  font-weight: 600;
-  margin-top: 30px;
-  margin-left: 5px;
-}
+/*.promo-title{*/
+/*  font-size: 20px;*/
+/*  font-weight: 600;*/
+/*  margin-top: 30px;*/
+/*  margin-left: 5px;*/
+/*}*/
 .btn-primary{
   margin: 10px;
 }

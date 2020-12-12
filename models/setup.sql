@@ -1,9 +1,9 @@
-CREATE TABLE tbl_grocery(
-id INTEGER  PRIMARY KEY ,
+CREATE TABLE IF NOT EXISTS tbl_grocery(
+id INTEGER  PRIMARY KEY,
 name TEXT NOT NULL,
 imgUrl TEXT NOT NULL,
-quantity INTEGER NOT NULL,
-cost NUMBER NOT NULL,
+quantity NUMBER NOT NULL,
+cost REAL NOT NULL,
 created_on DATE NOT NULL
 );
 

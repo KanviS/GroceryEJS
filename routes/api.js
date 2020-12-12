@@ -2,10 +2,14 @@ var express = require('express');
 var router = express.Router();
 var init_model=require('../models/init')
 var grocery_model=require('../models/query')
-router.get('/', function(req, res, next) {
-    res.send({
-        msg:"respond with a API resource"
-    })
+
+router.get('/groceries', async function(req, res, next) {
+    let results= await grocery_model.get_all_grocery()
+    if(results){
+        res.send(results)
+    }else{
+        res.send({msg:"Something went wrong."})
+    }
 });
 
 router.get('/init',async(req,res)=>{
@@ -21,11 +25,10 @@ router.get('/init',async(req,res)=>{
 router.post('/add',async(req,res)=>{
     let name=req.body.name
     let imgUrl=req.body.imgUrl
-    let qty=req.body.quantity
+    let quantity=req.body.quantity
     let cost=req.body.cost
 
-    let added=await grocery_model.add_grocery(name,imgUrl,qty,cost);
-    console.log(added);
+    let added=await grocery_model.add_grocery(name,imgUrl,quantity,cost);
     if(added){
         res.send({msg:"Grocery added to database"})
     }else{
@@ -49,15 +52,6 @@ router.get('/update/:id',async(req,res)=>{
     let result= await grocery_model.edit_grocery_qty(id,qty)
     if(result){
         res.send(result)
-    }else{
-        res.send({msg:"Something went wrong."})
-    }
-})
-
-router.get('/groceries',async(req,res)=>{
-    let results= await grocery_model.get_all_grocery()
-    if(results){
-        res.send(results)
     }else{
         res.send({msg:"Something went wrong."})
     }

@@ -6,40 +6,21 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="icon" href="/images/logo.png">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </head>
   <body>
-
-  <section id="nav-bar">
-    <nav class="navbar navbar-expand-lg navbar-light ">
-      <a class="navbar-brand" href="#"><%= title %></a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-
-
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-          </li>
-          <li>
-            <a class="nav-link" href="#">Cart <span class="sr-only"></span></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </section>
-  <section id="banner">
     <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-            <p class="promo-title">You have below list of grocery for selection</p>
-          </div>
-
-        </div>
+      <div class="d-inline-block">
+        <h6>You have below list of grocery for selection</h6>
+      </div>
+      <div class="d-inline-block pull-right">
+        <span>
+          <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addModal"><i class="fa fa-plus" aria-hidden="true"></i></button>
+        </span>
       </div>
     </div>
-    <button type="button" class="btn btn-primary float-right"><i class="fa fa-plus" aria-hidden="true"></i></button>
     <table class="table">
       <thead>
       <tr>
@@ -51,13 +32,59 @@
       </tr>
       </thead>
       <tbody id = "tableData">
+      <% if(groceries.length > 0){ %>
+      <% groceries.forEach((grocery) => { %>
+        <tr><td><img src=<%= grocery.imgUrl %>></td>
+          <td><%= grocery.name %></td>
+          <td><%= grocery.quantity %></td>
+          <td><%= grocery.cost %></td>
+          <td><a href="delete/<%= grocery.id %>" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
+            <a href="update/<%= grocery.id %>" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
+        </tr>
+      <% }); %>
+      <% } else{ %>
+        <tr><td colspan="4" class="text-center">No data is available</td></tr>
+      <% } %>
       </tbody>
     </table>
-    <div id="totalPrice" class="font-weight-bold float-right"></div>
-  </section>
+    <div id="totalPrice" class="font-weight-bold float-right">Sum: <%= price.total %></div>
 
-
-  </div>
-  <script src="./public/javaScripts/groeryList.js"></script>
+    <!-- Modal -->
+    <div class="modal" tabindex="-1" id="addModal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form method="post" action="./add">
+          <div class="modal-body">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" placeholder="Enter name">
+              </div>
+              <div class="form-group">
+                <label for="imgUrl">Image Url</label>
+                <input type="text" class="form-control" id="imgUrl" placeholder="Enter imgUrl">
+              </div>
+              <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="text" class="form-control" id="quantity" placeholder="Enter quantity">
+              </div>
+              <div class="form-group">
+                <label for="cost">Cost</label>
+                <input type="text" class="form-control" id="cost" placeholder="Enter cost">
+              </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success" data-dismiss="modal">Add</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </form>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+var init_model=require('../models/init')
 var grocery_model=require('../models/query')
 
 // GET Homepage
 router.get('/', async(req, res) => {
+  let result=await init_model.init_DB()
   let groceries = await grocery_model.get_all_grocery()
   let price = await grocery_model.get_grocery_count()
   if(groceries) {

@@ -1,4 +1,4 @@
-CREATE TABLE tbl_grocery(
+CREATE TABLE IF NOT EXISTS tbl_grocery(
 id INTEGER  PRIMARY KEY,
 name TEXT NOT NULL,
 imgUrl TEXT NOT NULL,

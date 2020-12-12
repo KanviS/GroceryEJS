@@ -32,6 +32,7 @@
       </tr>
       </thead>
       <tbody id = "tableData">
+      <% if(groceries.length > 0){ %>
       <% groceries.forEach((grocery) => { %>
         <tr><td><img src=<%= grocery.imgUrl %>></td>
           <td><%= grocery.name %></td>
@@ -40,7 +41,10 @@
           <td><a href="delete/<%= grocery.id %>" class="btn btn-danger"><i class="fa fa-trash" aria-hidden="true"></i></a>
             <a href="update/<%= grocery.id %>" class="btn btn-success"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a></td>
         </tr>
-      <% }) %>
+      <% }); %>
+      <% } else{ %>
+        <tr><td colspan="4" class="text-center">No data is available</td></tr>
+      <% } %>
       </tbody>
     </table>
     <div id="totalPrice" class="font-weight-bold float-right">Sum: <%= price.total %></div>

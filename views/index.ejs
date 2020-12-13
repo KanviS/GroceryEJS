@@ -1,7 +1,7 @@
 <%- include('./parts/header') %>
     <div class="container">
       <div class="d-inline-block">
-        <h6>You have below list of grocery for selection</h6>
+        <h5 style="font-weight: 600"> Hit Plus button to generate your Grocery List </h5>
       </div>
       <div class="d-inline-block pull-right">
         <span>
@@ -9,6 +9,7 @@
         </span>
       </div>
     </div>
+<div class="container">
     <table class="table">
       <thead>
       <tr>
@@ -22,7 +23,7 @@
       <tbody id = "tableData">
       <% if(groceries.length > 0){ %>
       <% groceries.forEach((grocery) => { %>
-        <tr><td><img src=<%= grocery.imgUrl %>></td>
+        <tr class="tableRow"><td><img src=<%= grocery.imgUrl %>></td>
           <td><%= grocery.name %></td>
           <td><%= grocery.quantity %></td>
           <td>$<%= grocery.cost %></td>
@@ -31,9 +32,10 @@
         </tr>
       <% }); %>
       <% } else{ %>
-        <tr><td colspan="4" class="text-center">No data is available</td></tr>
+        <tr><td colspan="4" class="text-center" style="align-content: center; font-size: 200%">No data is available</td></tr>
       <% } %>
       </tbody>
     </table>
-    <div id="totalPrice" class="font-weight-bold float-right">Sum: $<%= price.total %></div>
+    <div id="totalPrice" class="font-weight-bold float-right tableRow">Sum: $<%= price.total %></div>
+</div>
     <%- include('./parts/tail') %>

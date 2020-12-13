@@ -12,6 +12,31 @@ exports.add_grocery=async(name,imgUrl,quantity,cost)=> {
     }
     return msg
 }
+// update post
+exports.update_grocery=async(name,imgUrl,quantity,cost,id)=> {
+    let stmnt = db.prepare('UPDATE tbl_grocery SET name=?,imgUrl=?,quantity=?,cost=? WHERE id=?')
+    let msg
+    try {
+        msg = await stmnt.run(name,imgUrl,quantity, cost,id)
+        console.log(msg)
+    } catch (e) {
+        console.log(e.message)
+        return null
+    }
+    return msg
+}
+
+exports.get_grocery_by_id=async(id)=> {
+    let stmnt = db.prepare('SELECT * FROM tbl_grocery WHERE id=?')
+    let msg
+    try {
+        msg = await stmnt.get(id)
+    } catch (e) {
+        console.log(e.message)
+        return null
+    }
+    return msg
+}
 
 // Delete post by id
 exports.delete_grocery_by_id=async(id)=>{

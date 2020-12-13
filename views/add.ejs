@@ -1,29 +1,28 @@
 <%- include('./parts/header') %>
-<h1>Add Grocery List</h1>
-<form method="post" action="/add">
+<div class="container">
+    <h1>Add Grocery List</h1>
+    <br>
+<form method="post" action="/add" name = "f1" >
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" class="form-control" id="name" name="name" placeholder="Enter name">
         </div>
-<!--        <div class="form-group">-->
-<!--            <form method="POST" action="/upload-grocery-pic" enctype="multipart/form-data">-->
-<!--                <div>-->
-<!--                    <label>Select Your Grocery Picture:</label>-->
-<!--                    <input type="file" name="grocery_pic" />-->
-<!--                </div>-->
-<!--                <div>-->
-<!--                    <input type="submit" name="btn_upload_grocery_pic" value="Upload" />-->
-<!--                </div>-->
-<!--            </form>-->
-
-            <form method="POST" action="/upload-grocery-pic" enctype="multipart/form-data">
-                <label for="imgUrl">Select Your Grocery Picture:</label>
-                    <input type="file" class="form-control" name="grocery_pic" placeholder="Enter imgUrl" />
-                <div>
-                    <input type="submit" name="btn_upload_grocery_pic" value="Upload" />
-                </div>
-            </form>
+        <div class="form-group">
+            <label for="imgUrl">Image Url</label>
+            <input type="text" class="form-control" id="imgUrl" name="imgUrl" placeholder="Enter imgUrl">
         </div>
+<!--    Field to chhose image from user's system-->
+<!--    <div class="form-group">-->
+<!--    <form method="POST" action="/upload-grocery-pic" enctype="multipart/form-data">-->
+<!--        <div>-->
+<!--            <label>Select your grocery picture:</label>-->
+<!--            <input type="file" name="grocery_pic" id="imgUrl" />-->
+<!--        </div>-->
+<!--        <div>-->
+<!--            <input type="submit" name="btn_upload_grocery_pic" value="Upload" />-->
+<!--        </div>-->
+<!--    </form>-->
+<!--</div>-->
         <div class="form-group">
             <label for="quantity">Quantity</label>
             <input type="text" class="form-control" id="quantity" name="quantity" placeholder="Enter quantity">
@@ -32,17 +31,24 @@
             <label for="cost">Cost</label>
             <input type="text" class="form-control" id="cost" name="cost" placeholder="Enter cost">
         </div>
-        <button type="submit" class="btn btn-success" data-dismiss="modal">Add</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-</form>
+    <button type="submit" class="btn btn-success" data-dismiss="modal" onclick="required()">Add</button>
+    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
 
-<!--<form method="POST" action="/upload-grocery-pic" enctype="multipart/form-data">-->
-<!--    <div>-->
-<!--        <label>Select Your Grocery Picture:</label>-->
-<!--        <input type="file" name="grocery_pic" />-->
-<!--    </div>-->
-<!--    <div>-->
-<!--        <input type="submit" name="btn_upload_grocery_pic" value="Upload" />-->
-<!--    </div>-->
-<!--</form>-->
+</form>
+</div>
+
+<script>
+    function required(){
+        let empt1 = document.forms["f1"]["name"].value;
+        let empt2 = document.forms["f1"]["imgUrl"].value;
+        let empt3 = document.forms["f1"]["quantity"].value;
+        let empt4 = document.forms["f1"]["cost"].value;
+
+        if((empt1 == null || empt1 === "") && (empt2 == null || empt2 === "") && (empt3 == null || empt3 === "") && (empt4 == null || empt4 === "")){
+            alert("Each field must be filled out !!!");
+            return false;
+        }
+    }
+</script>
+
 <%- include('./parts/tail') %>
